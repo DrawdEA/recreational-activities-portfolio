@@ -61,8 +61,8 @@ src/app/page.tsx
 Useful places to edit:
 
 - `heroClips` for the moving media wall
-- `galleryMedia` for the Photos and Videos section
-- `gameVideos` for the sticky looping video panels
+- `galleryMedia` for the Photos section
+- `gameMedia` for the sticky media panels
 - `filipinoMechanics` for Duo Agawang Base cards
 - `foreignMechanics` for Dice Dash Basketball Relay cards
 - `filipinoDetailedRules` and `foreignDetailedRules` for the modal rule lists

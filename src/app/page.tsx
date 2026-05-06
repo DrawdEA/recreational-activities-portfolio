@@ -3,102 +3,200 @@ import Image from "next/image";
 import RulesModal from "./rules-modal";
 import VibeController from "./vibe-controller";
 
-const heroClips = [
-  {
-    label: "Base Run",
-    meta: "Duo",
-    tone: "sun",
-    src: "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    label: "Jail Rescue",
-    meta: "Agawan",
-    tone: "mint",
-    src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    label: "Dice Roll",
-    meta: "Relay",
-    tone: "ember",
-    src: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    label: "Cone Weave",
-    meta: "Dash",
-    tone: "sky",
-    src: "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    label: "Shot Clock",
-    meta: "Score",
-    tone: "lime",
-    src: "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    label: "Final Match",
-    meta: "Bracket",
-    tone: "violet",
-    src: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80",
-  },
+const heroColumns = [
+  [
+    {
+      label: "Pair Run",
+      meta: "Laro",
+      tone: "sun",
+      src: "/lahi/Unknown-33.jpg",
+    },
+    {
+      label: "Base Guard",
+      meta: "Laro",
+      tone: "mint",
+      src: "/lahi/Unknown-29.jpg",
+    },
+    {
+      label: "Tag Chase",
+      meta: "Laro",
+      tone: "ember",
+      src: "/lahi/Unknown-23.jpg",
+    },
+    {
+      label: "Base Play",
+      meta: "Laro",
+      tone: "sky",
+      src: "/lahi/Unknown-28.jpg",
+    },
+    {
+      label: "Team Hold",
+      meta: "Laro",
+      tone: "lime",
+      src: "/lahi/Unknown-35.jpg",
+    },
+    {
+      label: "Game Talk",
+      meta: "Laro",
+      tone: "violet",
+      src: "/lahi/Unknown-36.jpg",
+    },
+  ],
+  [
+    {
+      label: "Cone Dash",
+      meta: "Relay",
+      tone: "ember",
+      src: "/photos/1a378f41-d2dc-4207-ad24-7ce53a46c749.jpeg",
+    },
+    {
+      label: "Cone Weave",
+      meta: "Dash",
+      tone: "sky",
+      src: "/photos/1333a697-6145-4294-8807-9fd910c22928.jpeg",
+    },
+    {
+      label: "Shot Form",
+      meta: "Score",
+      tone: "lime",
+      src: "/photos/1ccfe712-8f98-4bd0-8fcc-9b0e572a0dce.jpeg",
+    },
+    {
+      label: "Shot Release",
+      meta: "Score",
+      tone: "sun",
+      src: "/photos/24efcbd3-b3ae-4c39-b973-dbea2210c60c.jpeg",
+    },
+    {
+      label: "Lane Setup",
+      meta: "Relay",
+      tone: "mint",
+      src: "/photos/57014263-2cde-445f-95c9-0815a1bf2281.jpeg",
+    },
+    {
+      label: "Shooting Pair",
+      meta: "Score",
+      tone: "violet",
+      src: "/photos/6016f5ef-41e0-4f98-8808-e9e0f9618c2b.jpeg",
+    },
+  ],
+  [
+    {
+      label: "Jail Base",
+      meta: "Agawan",
+      tone: "mint",
+      src: "/lahi/Unknown-27.jpg",
+    },
+    {
+      label: "Pair Defense",
+      meta: "Laro",
+      tone: "sun",
+      src: "/lahi/Unknown-19.jpg",
+    },
+    {
+      label: "Team Line",
+      meta: "Laro",
+      tone: "sky",
+      src: "/lahi/Unknown-24.jpg",
+    },
+    {
+      label: "Briefing Lane",
+      meta: "Relay",
+      tone: "ember",
+      src: "/photos/5c786953-aabe-40d1-886d-a4e71b117936.jpeg",
+    },
+    {
+      label: "Final Match",
+      meta: "Bracket",
+      tone: "lime",
+      src: "/photos/e9493111-38ae-4634-8854-df39e3b81c07.jpeg",
+    },
+    {
+      label: "Scoreboard",
+      meta: "Bracket",
+      tone: "violet",
+      src: "/photos/e163402e-1e6e-4287-ae86-70ffe82b0c7a.jpeg",
+    },
+  ],
 ] as const;
+
+const heroColumnStartIndexes = heroColumns.map((_column, columnIndex) =>
+  heroColumns.slice(0, columnIndex).reduce((total, column) => total + column.length, 0),
+);
 
 const galleryMedia = [
   {
-    label: "Basketball Hoop",
-    meta: "Video",
-    type: "video",
-    src: "https://cdn.pixabay.com/video/2024/04/18/208442_large.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1400&q=80",
+    label: "Pair Run",
+    meta: "Laro ng Lahi",
+    src: "/lahi/Unknown-33.jpg",
+  },
+  {
+    label: "Base Guard",
+    meta: "Laro ng Lahi",
+    src: "/lahi/Unknown-29.jpg",
+  },
+  {
+    label: "Tag Chase",
+    meta: "Laro ng Lahi",
+    src: "/lahi/Unknown-23.jpg",
+  },
+  {
+    label: "Base Play",
+    meta: "Laro ng Lahi",
+    src: "/lahi/Unknown-28.jpg",
+  },
+  {
+    label: "Team Hold",
+    meta: "Laro ng Lahi",
+    src: "/lahi/Unknown-35.jpg",
+  },
+  {
+    label: "Cone Lane",
+    meta: "Dice Dash",
+    src: "/photos/1333a697-6145-4294-8807-9fd910c22928.jpeg",
   },
   {
     label: "Relay Run",
-    meta: "Video",
-    type: "video",
-    src: "https://cdn.pixabay.com/video/2024/04/18/208442_large.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?auto=format&fit=crop&w=1200&q=80",
+    meta: "Dice Dash",
+    src: "/photos/1a378f41-d2dc-4207-ad24-7ce53a46c749.jpeg",
   },
   {
-    label: "Team Huddle",
-    meta: "Photo",
-    type: "image",
-    src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
+    label: "Jump Shot",
+    meta: "Dice Dash",
+    src: "/photos/1ccfe712-8f98-4bd0-8fcc-9b0e572a0dce.jpeg",
+  },
+  {
+    label: "Shot Release",
+    meta: "Dice Dash",
+    src: "/photos/24efcbd3-b3ae-4c39-b973-dbea2210c60c.jpeg",
   },
   {
     label: "Court Setup",
-    meta: "Photo",
-    type: "image",
-    src: "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=1200&q=80",
+    meta: "Dice Dash",
+    src: "/photos/57014263-2cde-445f-95c9-0815a1bf2281.jpeg",
   },
   {
-    label: "Game Action",
-    meta: "Photo",
-    type: "image",
-    src: "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80",
+    label: "Shooting Pair",
+    meta: "Dice Dash",
+    src: "/photos/6016f5ef-41e0-4f98-8808-e9e0f9618c2b.jpeg",
   },
   {
-    label: "Final Shot",
-    meta: "Photo",
-    type: "image",
-    src: "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?auto=format&fit=crop&w=1200&q=80",
+    label: "Scoreboard",
+    meta: "Bracket",
+    src: "/photos/e163402e-1e6e-4287-ae86-70ffe82b0c7a.jpeg",
   },
 ] as const;
 
-const gameVideos = {
+const gameMedia = {
   warm: {
-    eyebrow: "Gameplay Loop",
-    title: "Pair movement, base runs, and rescue moments.",
-    src: "https://cdn.pixabay.com/video/2024/04/18/208442_large.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1400&q=80",
+    eyebrow: "Tala ng Laro",
+    title: "Pares, base, tag, at mabilis na diskarte.",
+    src: "/lahi/Unknown-33.jpg",
   },
   electric: {
-    eyebrow: "Gameplay Loop",
-    title: "Cone weave, dice chance, and shooting rhythm.",
-    src: "https://cdn.pixabay.com/video/2024/04/18/208442_large.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?auto=format&fit=crop&w=1400&q=80",
+    eyebrow: "Photo Reel",
+    title: "Cone weave, basketball shots, and scoring rhythm.",
+    src: "/photos/1a378f41-d2dc-4207-ad24-7ce53a46c749.jpeg",
   },
 } as const;
 
@@ -109,19 +207,19 @@ const filipinoMechanics = [
     body: "Ang Duo Agawang Base ay binagong bersyon ng tradisyonal na Agawang Base. Sa larong ito, kailangang gumalaw ang mga manlalaro bilang magkapareha upang mas bigyang-diin ang komunikasyon, diskarte, at pagtutulungan.",
   },
   {
-    title: "Pagbuo ng Koponan",
+    title: "Pagbuo ng Grupo",
     visual: "pairHold",
-    body: "Hahatiin ang mga manlalaro sa dalawang koponan. Bawat koponan ay bubuo ng mga pares o duo. Kailangang magkahawak-kamay ang magkapareha habang naglalaro at manatiling malapit sa isa't isa.",
+    body: "Hahatiin ang mga manlalaro sa dalawang grupo. Bawat grupo ay bubuo ng mga pares o duo. Kailangang magkahawak-kamay ang magkapareha habang naglalaro at manatiling malapit sa isa't isa.",
   },
   {
     title: "Home Base",
     visual: "homeBase",
-    body: "May sariling base ang bawat koponan sa magkabilang dulo ng court. Para sa aktibidad na ito, gagamitin ang cushion sa base ng basketball hoop bilang home base.",
+    body: "May sariling base ang bawat grupo sa magkabilang dulo ng court. Para sa aktibidad na ito, gagamitin ang cushion sa base ng basketball hoop bilang home base.",
   },
   {
     title: "Layunin ng Laro",
     visual: "baseTouch",
-    body: "Kailangang mahawakan ng isang pares ang base ng kalaban nang hindi natatag. Ang koponang mas maraming beses na makakahawak sa base ng kalaban sa loob ng itinakdang oras ang mananalo.",
+    body: "Kailangang mahawakan ng isang pares ang base ng kalaban nang hindi natatag. Ang grupong mas maraming beses na makakahawak sa base ng kalaban sa loob ng itinakdang oras ang mananalo.",
   },
   {
     title: "Tagging at Jail",
@@ -129,14 +227,14 @@ const filipinoMechanics = [
     body: "Kapag natag ang isa sa magkapareha, pareho silang ituturing na nahuli. Ang nahuling pares ay pupunta sa jail area malapit sa base ng kalaban at kailangang manatiling nakadikit ang isang kamay sa base.",
   },
   {
-    title: "Binagong Mekaniks",
+    title: "Mga Ipinagbabawal",
     visual: "brokenPair",
     body: "Kung sinadyang bumitaw ang magkapareha, kailangan nilang bumalik sa base bago magpatuloy. Maaaring sagipin ng malayang pares ang nakakulong na kakampi sa pamamagitan ng ligtas na pagtag sa kanila.",
   },
   {
     title: "Format ng Laro",
     visual: "bestOfNine",
-    body: "Lalaruin ito sa 5 hanggang 9 rounds. Best of 9 ang format, unang koponang manalo ng 5 rounds ang magiging champion. Bawat round ay tatagal ng 7 minuto o hanggang may makahawak sa base ng kalaban.",
+    body: "Lalaruin ito sa 5 hanggang 9 rounds. Best of 9 ang format, unang grupong manalo ng 5 rounds ang magiging champion. Bawat round ay tatagal ng 7 minuto o hanggang may makahawak sa base ng kalaban.",
   },
   {
     title: "Kaligtasan",
@@ -189,16 +287,16 @@ const foreignMechanics = [
 ];
 
 const filipinoDetailedRules = [
-  "Hahatiin ang mga manlalaro sa dalawang koponan.",
-  "Bawat koponan ay bubuo ng mga pares o duo.",
+  "Hahatiin ang mga manlalaro sa dalawang grupo.",
+  "Bawat grupo ay bubuo ng mga pares o duo.",
   "Kailangang magkahawak-kamay ang magkapareha habang naglalaro.",
   "Kailangang gumalaw ang mga manlalaro bilang pares at manatiling malapit sa isa't isa.",
   "Kung sinadyang bumitaw ang isang pares, ituturing silang broken pair at kailangang bumalik sa sariling base bago magpatuloy.",
   "Kung aksidenteng nabitawan dahil sa bump o banggaan, bibigyan muna ng warning bago patawan ng consequence.",
-  "May sariling home base ang bawat koponan sa magkabilang dulo ng court.",
+  "May sariling home base ang bawat grupo sa magkabilang dulo ng court.",
   "Ang cushion sa base ng basketball hoop ang gagamiting home base.",
   "Layunin ng bawat pares na mahawakan ang base ng kalaban nang hindi natatag.",
-  "Ang koponang mas maraming beses na makahawak sa base ng kalaban sa loob ng itinakdang oras ang mananalo.",
+  "Ang grupong mas maraming beses na makahawak sa base ng kalaban sa loob ng itinakdang oras ang mananalo.",
   "Kapag nahawakan ng isang pares ang base ng kalaban, hindi na sila maaaring itag habang pabalik sa sariling base.",
   "Kailangang bumalik muna ang pares sa sariling base bago sila muling makapuntos sa base ng kalaban.",
   "Maaari lamang magtag ng kalaban sa loob ng playing field o basketball court.",
@@ -209,12 +307,12 @@ const filipinoDetailedRules = [
   "Kailangang manatili ang lahat ng manlalaro sa loob ng court boundaries.",
   "Kung odd ang bilang ng manlalaro, isang manlalaro mula sa nakaraang round ang muling lalaro upang manatiling pares ang lahat.",
   "Lalaruin ang laro sa 5 hanggang 9 rounds.",
-  "Best of 9 ang format; unang koponang manalo ng 5 rounds ang magiging champion.",
+  "Best of 9 ang format; unang grupong manalo ng 5 rounds ang magiging champion.",
   "Bawat round ay tatagal ng 7 minuto o hanggang may pares na makahawak sa base ng kalaban.",
   "May 5 minutong halftime break para sa pahinga, hydration, at strategy.",
   "Nire-reset ang score kada round.",
   "Ang paghawak sa base ng kalaban ay katumbas ng 1 point.",
-  "Ang koponang may pinakamaraming round victories ang tatanghaling Champion Team.",
+  "Ang grupong may pinakamaraming round victories ang tatanghaling Champion Group.",
   "Bawal ang labis na lakas sa pagtag.",
   "Kailangang panatilihin ang sportsmanship sa buong laro.",
   "Kailangang magsuot ng angkop na athletic attire at footwear.",
@@ -259,59 +357,50 @@ const foreignDetailedRules = [
   "Hydration breaks must be followed.",
 ] as const;
 
-const timeline = [
+const timelineDays = [
   {
-    time: "TBA",
-    phase: "Prep",
-    title: "Court setup",
-    body: "Bases, cone lanes, shooting areas, camera spots, and safety boundaries are prepared.",
+    day: "Day 1",
+    title: "Laro ng Lahi",
+    items: [
+      ["2:30-2:40", "Warmup", "Light movement and preparation before playing."],
+      ["2:40-2:45", "Instructions", "Rules and reminders for Duo Agawang Base."],
+      ["2:45-2:55", "Game 1", "First round of Duo Agawang Base."],
+      ["2:55-3:00", "Rest", "Short pause before the next game."],
+      ["3:00-3:10", "Game 2", "Second round of Duo Agawang Base."],
+      ["3:10-3:15", "Water break", "Quick hydration break."],
+      ["3:15-3:20", "Game 3", "Final round, rest, and cool down."],
+    ],
   },
   {
-    time: "TBA",
-    phase: "Brief",
-    title: "Duo Agawang Base briefing",
-    body: "Pairs are formed, home bases are assigned, and the tagging/jail mechanics are explained.",
-  },
-  {
-    time: "TBA",
-    phase: "Game 01",
-    title: "Duo Agawang Base gameplay",
-    body: "Teams play timed rounds while duos coordinate attacks, rescues, and defensive movement.",
-  },
-  {
-    time: "TBA",
-    phase: "Reset",
-    title: "Dice Dash setup",
-    body: "Four teams are arranged into a bracket, cones are aligned, and the dice-and-shot rule is explained.",
-  },
-  {
-    time: "TBA",
-    phase: "Game 02",
-    title: "Dice Dash matches",
-    body: "Players roll, weave through cones, shoot from chosen spots, and build their team score.",
+    day: "Day 2",
+    title: "Dice Dash Basketball Relay",
+    items: [
+      ["2:30-2:40", "Warmup", "Light movement and shooting preparation."],
+      ["2:40-2:45", "Instructions", "Rules and reminders for the relay format."],
+      ["2:45-2:53", "Championship Game 1", "First championship match."],
+      ["2:53-2:55", "Rest", "Two-minute pause before the next match."],
+      ["2:55-3:03", "Championship Game 2", "Second championship match."],
+      ["3:03-3:05", "Rest and Water Break", "Two-minute hydration and reset."],
+      ["3:05-3:13", "Winners", "Final winners' match."],
+      ["3:13-3:20", "Rest and Cool Down", "Cool down and pack up."],
+    ],
   },
 ] as const;
 
 const reflections = [
   {
-    name: "Edward Joshua Diesta",
+    name: "Edward Diesta",
     role: "Reflection 01",
-    photoLabel: "Edward photo",
-    photo:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
-    quote:
-      "Recreation becomes more meaningful when we understand the people we play with and the culture behind the activity.",
-    body: "This course helped me see recreational activities as more than physical tasks or requirements. In Duo Agawang Base, I saw how a simple Filipino game can become more challenging and meaningful when players are asked to move as partners, communicate constantly, and protect each other during play. In Dice Dash Basketball Relay, I appreciated how chance, movement, and scoring can make basketball less intimidating for people with different skill levels. The experience reminded me that games are not only about winning, but also about creativity, respect, safety, and making space for everyone to participate.",
+    photo: "/profiles/edward.jpg",
+    photoLabel: "Edward Diesta",
+    body: "Taking this recreational activities course was honestly one of the best PE experiences I have had. As a Computer Science student, most of my subjects can feel very computer-like, screen-heavy, and mentally tiring, so this class became a real rest time for me. It did not feel like a subject that was only about completing requirements; it felt like a space where we could move, laugh, release stress, enjoy being with our classmates, and bring out our competitive spirit in a fun way. Through the activities we prepared and played, I learned how simple games can become meaningful when they are designed with teamwork, creativity, fairness, and inclusion in mind. Since this is our last PE subject, it feels like a fitting way to close that part of college life: with movement, memories, and games that brought people together.",
   },
   {
-    name: "Groupmate Name",
+    name: "Rafael Rafanan",
     role: "Reflection 02",
-    photoLabel: "Groupmate photo",
-    photo:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
-    quote:
-      "The activity showed how teamwork becomes stronger when everyone understands the goal and feels included in the game.",
-    body: "Working on these modified games made me appreciate the effort behind designing an activity that is both fun and understandable. Duo Agawang Base required us to think about pair movement, tagging fairness, rescue mechanics, and how to keep the traditional spirit of Agawang Base while making it feel new. Dice Dash Basketball Relay required clearer organization because the dice roll, cone relay, shooting area, and bracket format all had to work together smoothly. I realized that physical education connects to everyday life because it teaches patience, communication, adjustment, and responsibility.",
+    photo: "/profiles/raf.png",
+    photoLabel: "Rafael Rafanan",
+    body: "This class was the 'rest' I didn't know I needed. It has completely changed my perspective on what 'recreation' actually means. Coming from a heavy workload of coding and theory, I expected this to be just another requirement, but I ended up learning a lot about the intentionality behind play. I enjoyed seeing how teamwork and creativity can transform a simple set of rules into a meaningful social experience. It was refreshing to use my brain for game design and strategy rather than just debugging. Ending my PE journey with this class was a great reminder that staying active and staying connected to others is just as important as academic success.",
   },
 ];
 
@@ -325,7 +414,7 @@ function Reveal({
 function MediaCard({
   clip,
   index,
-}: Readonly<{ clip: (typeof heroClips)[number]; index: number }>) {
+}: Readonly<{ clip: (typeof heroColumns)[number][number]; index: number }>) {
   return (
     <div className={`media-card media-${clip.tone}`}>
       <Image className="media-card-asset" src={clip.src} alt="" fill sizes="18rem" />
@@ -334,7 +423,7 @@ function MediaCard({
         <span>{clip.meta}</span>
         <strong>{clip.label}</strong>
       </div>
-      <small>0{index + 1}</small>
+      <small>{String(index + 1).padStart(2, "0")}</small>
     </div>
   );
 }
@@ -347,39 +436,35 @@ function GalleryCard({
 
   return (
     <div className={`media-card gallery-media-card media-${tone}`}>
-      {item.type === "video" ? (
-        <video
-          className="media-card-asset"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={item.poster}
-        >
-          <source src={item.src} type="video/mp4" />
-        </video>
-      ) : (
-        <Image className="media-card-asset" src={item.src} alt="" fill sizes="18rem" />
-      )}
+      <Image className="media-card-asset" src={item.src} alt="" fill sizes="18rem" />
       <div className="scanline" />
       <div>
         <span>{item.meta}</span>
         <strong>{item.label}</strong>
       </div>
-      <small>0{index + 1}</small>
+      <small>{String(index + 1).padStart(2, "0")}</small>
     </div>
   );
 }
 
 function MediaColumn({
+  clips,
   offset = false,
-}: Readonly<{ offset?: boolean }>) {
+  startIndex,
+}: Readonly<{
+  clips: (typeof heroColumns)[number];
+  offset?: boolean;
+  startIndex: number;
+}>) {
   return (
     <div className={`media-column ${offset ? "reverse" : ""}`}>
       <div className="media-track">
-        {[...heroClips, ...heroClips].map((clip, index) => (
-          <MediaCard clip={clip} index={index % heroClips.length} key={`${clip.label}-${index}`} />
+        {[...clips, ...clips].map((clip, index) => (
+          <MediaCard
+            clip={clip}
+            index={startIndex + (index % clips.length)}
+            key={`${clip.src}-${index}`}
+          />
         ))}
       </div>
     </div>
@@ -647,16 +732,14 @@ function MechanicsVisual({
 function StickyVideoPanel({
   variant,
 }: Readonly<{ variant: "warm" | "electric" }>) {
-  const video = gameVideos[variant];
+  const media = gameMedia[variant];
 
   return (
     <div className={`sticky-video-panel ${variant}`}>
-      <video autoPlay loop muted playsInline poster={video.poster} preload="metadata">
-        <source src={video.src} type="video/mp4" />
-      </video>
+      <Image className="sticky-video-image" src={media.src} alt="" fill sizes="(max-width: 980px) 100vw, 34vw" />
       <div>
-        <span>{video.eyebrow}</span>
-        <strong>{video.title}</strong>
+        <span>{media.eyebrow}</span>
+        <strong>{media.title}</strong>
       </div>
     </div>
   );
@@ -671,22 +754,22 @@ export default function Home() {
           <Reveal>
             <p className="eyebrow">PEPC 19.03-PFT-N Portfolio</p>
             <h1>Game Day Portfolio</h1>
-            <p className="hero-lede">
-              A scroll-based showcase for Duo Agawang Base and Dice Dash
-              Basketball Relay, documented through mechanics, movement, media,
-              full rule lists, and individual reflections.
-            </p>
             <div className="hero-meta">
-              <span>Edward Joshua Diesta</span>
-              <span>Groupmate Name</span>
-              <span>May 2026 / Time TBA</span>
+              <span>Edward Diesta</span>
+              <span>Rafael Rafanan</span>
+              <span>2nd Sem / May 2026</span>
             </div>
           </Reveal>
         </div>
-        <div className="hero-media" aria-label="Moving media wall placeholders">
-          <MediaColumn />
-          <MediaColumn offset />
-          <MediaColumn />
+        <div className="hero-media" aria-label="Moving media wall">
+          {heroColumns.map((clips, index) => (
+            <MediaColumn
+              clips={clips}
+              offset={index === 1}
+              startIndex={heroColumnStartIndexes[index]}
+              key={`hero-column-${index}`}
+            />
+          ))}
         </div>
       </section>
 
@@ -753,27 +836,30 @@ export default function Home() {
       <section className="timeline-section" data-vibe="electric">
         <Reveal className="section-heading">
           <p className="eyebrow">Game Day Timeline</p>
-          <h2>Drop in the actual clock times after the final run.</h2>
+          <h2>Timeline</h2>
+          <p>Both activities were held during our 2:30-3:20 PM class time.</p>
         </Reveal>
-        <div className="timeline">
-          {timeline.map((item, index) => (
-            <Reveal className="timeline-row" key={item.title}>
-              <div className="timeline-time">
-                <time>{item.time}</time>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <div className="timeline-card">
-                <div className="timeline-card-copy">
-                  <span>{item.phase}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
+        <div className="timeline-minimal">
+          {timelineDays.map((day) => (
+            <Reveal className="timeline-day-card" key={day.day}>
+              <div className="timeline-day-heading">
+                <div>
+                  <span>{day.day}</span>
+                  <h3>{day.title}</h3>
                 </div>
-                <div className="timeline-visual" aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </div>
+                <time>2:30-3:20 PM</time>
               </div>
+              <ol className="timeline-list">
+                {day.items.map(([duration, title, body]) => (
+                  <li key={`${day.day}-${title}`}>
+                    <time>{duration}</time>
+                    <div>
+                      <strong>{title}</strong>
+                      <p>{body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </Reveal>
           ))}
         </div>
@@ -781,24 +867,13 @@ export default function Home() {
 
       <section className="gallery-section" data-vibe="media">
         <Reveal className="section-heading">
-          <p className="eyebrow">Photos and Videos</p>
-          <h2>A loud middle section for evidence, movement, and favorite moments.</h2>
+          <p className="eyebrow">Photos</p>
+          <h2>Moments from the court.</h2>
         </Reveal>
         <div className="feature-video">
-          <video
-            className="feature-video-media"
-            muted
-            loop
-            playsInline
-            controls
-            poster={galleryMedia[0].poster}
-          >
-            <source src={galleryMedia[0].src} type="video/mp4" />
-          </video>
-          <div className="play-icon">Play</div>
+          <Image className="feature-video-media" src="/photos/1ccfe712-8f98-4bd0-8fcc-9b0e572a0dce.jpeg" alt="" fill sizes="100vw" />
           <div>
-            <span>Featured highlight</span>
-            <h3>Replace this with your best gameplay video.</h3>
+            <h3>Pair runs, base plays, shots, and team moments.</h3>
           </div>
         </div>
         <div className="gallery-strip">
@@ -818,7 +893,13 @@ export default function Home() {
         >
           <Reveal className="reflection-photo-card">
             <div className="reflection-photo">
-              <Image className="reflection-photo-img" src={reflection.photo} alt="" fill sizes="(max-width: 980px) 50vw, 34vw" />
+              <Image
+                className="reflection-photo-img"
+                src={reflection.photo}
+                alt={reflection.photoLabel}
+                fill
+                sizes="(max-width: 980px) 100vw, 34vw"
+              />
               <span>{reflection.photoLabel}</span>
             </div>
           </Reveal>
@@ -826,7 +907,6 @@ export default function Home() {
             <span>{reflection.role}</span>
             <h2>{reflection.name}</h2>
             <p>{reflection.body}</p>
-            <blockquote>{reflection.quote}</blockquote>
           </Reveal>
         </section>
       ))}
@@ -834,14 +914,10 @@ export default function Home() {
       <section className="final-section" data-vibe="neutral">
         <footer className="thank-you-footer">
           <Reveal>
-            <p className="eyebrow">Thank You, Ma&apos;am Allely</p>
+            <p className="eyebrow">Thank you, Ma&apos;am Allely!</p>
             <h2>Goodbye, PE.</h2>
-            <p>
-              As our last PE subject comes to a close, this portfolio becomes
-              our small farewell to the games, movement, teamwork, and memories
-              we carried through the course.
-            </p>
-            <p className="footer-note">Thank you for guiding us, Ma&apos;am Allely.</p>
+            <p>Alexa, play Lifetime (Reimagined) by Ben&amp;Ben.</p>
+            <p className="eyebrow">Is there a lifetime waiting for us?~</p>
           </Reveal>
         </footer>
       </section>
