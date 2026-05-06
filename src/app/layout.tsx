@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   title: "Recreational Activity Portfolio",
   description:
     "A scroll-based PE portfolio for modified recreational games, media, and individual reflections.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#080706",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
